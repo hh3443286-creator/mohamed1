@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عقارات | بيتك أولويتنا</title>
+
+<style>
+:root{
+--bg:#07111f;
+--panel:#0c1b2d;
+--panel2:#10243a;
+--blue:#0866f5;
+--blue2:#2781ff;
+--text:#f4f7fc;
+--muted:#9aabc0;
+--line:#1b3048;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+background:var(--bg);
+color:var(--text);
+font-family:Tahoma,Arial,sans-serif;
+line-height:1.7;
+}
+
+a{color:inherit;text-decoration:none}
+
+button,input,select,textarea{font:inherit}
+
+button{cursor:pointer;border:0}
+
+.container{width:min(1180px,92%);margin:auto}
+
+.topbar{
+position:sticky;
+top:0;
+z-index:50;
+background:rgba(7,17,31,.96);
+border-bottom:1px solid var(--line);
+}
+
+.nav{
+min-height:78px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:25px;
+font-weight:bold;
+}
+
+.brand-icon{
+width:48px;
+height:48px;
+background:var(--blue);
+display:grid;
+place-items:center;
+border-radius:14px;
+font-size:28px;
+}
+
+.brand small{
+display:block;
+font-size:11px;
+color:var(--muted);
+font-weight:normal;
+}
+
+.navlinks{
+display:flex;
+align-items:center;
+gap:20px;
+font-size:14px;
+}
+
+.navlinks a:hover{color:var(--blue2)}
+
+.menu-btn{
+display:none;
+background:var(--panel2);
+color:white;
+padding:10px;
+border-radius:10px;
+}
+
+.hero{
+min-height:420px;
+display:flex;
+align-items:center;
+margin-top:22px;
+border-radius:26px;
+overflow:hidden;
+background:
+linear-gradient(90deg,#05101a55,#05101af2),
+url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85')
+center/cover;
+}
+
+.hero-content{
+padding:45px;
+max-width:650px;
+}
+
+.eyebrow{
+display:inline-block;
+color:#8ebaff;
+background:#0b2b56;
+padding:7px 13px;
+border-radius:30px;
+font-size:13px;
+}
+
+.hero h1{
+font-size:clamp(32px,5vw,54px);
+line-height:1.3;
+margin:18px 0;
+}
+
+.hero h1 span{color:var(--blue2)}
+
+.hero p{
+color:#d0d9e6;
+max-width:490px;
+margin-bottom:25px;
+}
+
+.primary,.secondary{
+padding:12px 20px;
+border-radius:12px;
+font-weight:bold;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+}
+
+.primary{
+background:var(--blue);
+color:white;
+}
+
+.primary:hover{background:var(--blue2)}
+
+.secondary{
+background:var(--panel2);
+border:1px solid var(--line);
+color:white;
+}
+
+.search-panel{
+position:relative;
+margin:-30px auto 45px;
+width:min(1080px,92%);
+padding:18px;
+background:#0d1b2d;
+border:1px solid #21364f;
+border-radius:20px;
+}
+
+.search-grid{
+display:grid;
+grid-template-columns:repeat(5,minmax(0,1fr));
+gap:12px;
+}
+
+.field label{
+display:block;
+font-size:12px;
+color:var(--muted);
+margin-bottom:6px;
+}
+
+.field input,.field select,
+.contact-form input,.contact-form textarea{
+width:100%;
+background:#081525;
+border:1px solid #263a52;
+color:white;
+border-radius:11px;
+padding:12px;
+outline:none;
+}
+
+.section{padding:25px 0 45px}
+
+.section-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:22px;
+}
+
+.section-head h2{margin:0;font-size:30px}
+
+.section-head p{
+margin:5px 0 0;
+color:var(--muted);
+font-size:14px;
+}
+
+.text-link{color:var(--blue2);font-weight:bold}
+
+.filters{
+display:flex;
+gap:9px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.filter-btn{
+padding:8px 16px;
+background:var(--panel);
+border:1px solid var(--line);
+color:white;
+border-radius:30px;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+background:var(--blue);
+}
+
+.property-grid{
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:18px;
+}
+
+.property-card{
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:18px;
+overflow:hidden;
+transition:.25s;
+cursor:pointer;
+}
+
+.property-card:hover{
+transform:translateY(-5px);
+border-color:var(--blue2);
+}
+
+.property-image{
+height:190px;
+position:relative;
+overflow:hidden;
+}
+
+.property-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.tag{
+position:absolute;
+top:12px;
+right:12px;
+background:var(--blue);
+padding:5px 12px;
+border-radius:30px;
+font-size:12px;
+}
+
+.heart{
+position:absolute;
+top:10px;
+left:10px;
+background:#07111fc9;
+color:white;
+width:35px;
+height:35px;
+border-radius:50%;
+font-size:18px;
+}
+
+.heart.saved{color:#ff657d}
+
+.property-info{padding:15px}
+
+.property-info h3{
+font-size:17px;
+margin:0 0 5px;
+}
+
+.location{
+color:var(--muted);
+font-size:12px;
+}
+
+.price{
+color:#2382ff;
+font-size:19px;
+font-weight:bold;
+margin:12px 0;
+}
+
+.facts{
+display:flex;
+justify-content:space-between;
+gap:5px;
+border-top:1px solid var(--line);
+padding-top:12px;
+color:#c0cddd;
+font-size:12px;
+}
+
+.card-actions{
+display:flex;
+gap:8px;
+margin-top:14px;
+}
+
+.card-actions button{
+flex:1;
+padding:9px 5px;
+border-radius:9px;
+font-size:12px;
+font-weight:bold;
+}
+
+.details-btn{
+background:#142c49;
+color:white;
+}
+
+.whatsapp{
+background:#087f55;
+color:white;
+}
+
+.empty{
+grid-column:1/-1;
+padding:35px;
+text-align:center;
+background:var(--panel);
+border-radius:15px;
+color:var(--muted);
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.category-card{
+position:relative;
+min-height:220px;
+overflow:hidden;
+border-radius:18px;
+}
+
+.category-card img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+inset:0;
+}
+
+.category-card:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(0deg,#06101ff2,transparent);
+}
+
+.category-label{
+position:absolute;
+z-index:1;
+bottom:18px;
+right:20px;
+}
+
+.category-label h3{margin:0;font-size:23px}
+.category-label p{color:#c4d0df;font-size:13px}
+
+.about-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:35px;
+align-items:center;
+}
+
+.about-image{
+width:100%;
+height:350px;
+object-fit:cover;
+border-radius:20px;
+}
+
+.about-copy p{color:var(--muted)}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:22px;
+}
+
+.stat{
+padding:15px;
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:13px;
+}
+
+.stat strong{
+display:block;
+color:var(--blue2);
+font-size:24px;
+}
+
+.stat span{font-size:12px;color:var(--muted)}
+
+.reviews{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.review{
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:16px;
+padding:22px;
+}
+
+.stars{color:#ffc857;letter-spacing:3px}
+.review p{color:#c0ccdb;font-size:14px}
+.review small{color:var(--muted)}
+
+.contact-grid{
+display:grid;
+grid-template-columns:.9fr 1.1fr;
+gap:24px;
+}
+
+.contact-info,.contact-form{
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:18px;
+padding:25px;
+}
+
+.contact-info p{color:var(--muted)}
+
+.contact-form{
+display:grid;
+gap:13px;
+}
+
+.contact-form label{
+font-size:13px;
+color:#c4d0df;
+}
+
+.contact-form textarea{
+resize:vertical;
+min-height:120px;
+}
+
+.footer{
+border-top:1px solid var(--line);
+padding:35px 0 20px;
+background:#060e19;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:1.4fr 1fr 1fr 1fr;
+gap:28px;
+}
+
+.footer p,.footer a{
+color:var(--muted);
+font-size:13px;
+}
+
+.footer-links{display:grid;gap:7px}
+
+.copyright{
+border-top:1px solid var(--line);
+margin-top:25px;
+padding-top:18px;
+color:var(--muted);
+font-size:12px;
+}
+
+.modal{
+position:fixed;
+inset:0;
+z-index:100;
+background:#020812e8;
+display:none;
+align-items:center;
+justify-content:center;
+padding:18px;
+overflow:auto;
+}
+
+.modal.open{display:flex}
+
+.modal-box{
+width:min(800px,100%);
+max-height:92vh;
+overflow:auto;
+background:var(--panel);
+border:1px solid #29415d;
+border-radius:20px;
+position:relative;
+}
+
+.modal-close{
+position:absolute;
+top:12px;
+left:12px;
+z-index:2;
+background:#07111f;
+color:white;
+border-radius:50%;
+width:40px;
+height:40px;
+font-size:24px;
+}
+
+.modal-img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.modal-body{padding:24px}
+
+.modal-facts{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin:18px 0;
+}
+
+.modal-facts div{
+background:#081525;
+border:1px solid var(--line);
+padding:12px;
+border-radius:10px;
+text-align:center;
+}
+
+.modal-facts small{
+display:block;
+color:var(--muted);
+}
+
+.modal-actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.toast{
+position:fixed;
+bottom:20px;
+right:50%;
+transform:translateX(50%);
+background:#10243a;
+border:1px solid #2c4a69;
+padding:12px 20px;
+border-radius:12px;
+z-index:200;
+display:none;
+}
+
+.toast.show{display:block}
+
+@media(max-width:1000px){
+.property-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.search-grid{grid-template-columns:repeat(2,1fr)}
+.search-submit{grid-column:1/-1}
+.footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:720px){
+.nav{min-height:68px}
+.menu-btn{display:block}
+.navlinks{
+display:none;
+position:absolute;
+top:68px;
+right:0;
+left:0;
+background:#0b192a;
+padding:18px 5%;
+flex-direction:column;
+align-items:stretch;
+}
+.navlinks.open{display:flex}
+.hero{min-height:370px}
+.hero-content{padding:25px}
+.search-grid{grid-template-columns:1fr 1fr}
+.category-grid,.about-grid,.contact-grid,.reviews{grid-template-columns:1fr}
+.about-image{height:260px}
+.footer-grid{grid-template-columns:1fr 1fr}
+.property-image{height:160px}
+.modal-facts{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:390px){
+.property-grid{grid-template-columns:1fr}
+.search-grid,.footer-grid{grid-template-columns:1fr}
+.property-image{height:210px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+<div class="container nav">
+<a class="brand" href="#home">
+<span class="brand-icon">⌂</span>
+<span>عقارات<small>بيتك... أولويتنا</small></span>
+</a>
+
+<nav class="navlinks" id="navlinks">
+<a href="#home">الرئيسية</a>
+<a href="#properties">العقارات</a>
+<a href="#apartments">الشقق</a>
+<a href="#villas">الفيلات والأراضي</a>
+<a href="#about">من نحن</a>
+<a href="#contact">اتصل بنا</a>
+</nav>
+
+<button class="menu-btn" id="menuBtn">☰</button>
+</div>
+</header>
+
+<main id="home">
+<div class="container">
+<section class="hero">
+<div class="hero-content">
+<span class="eyebrow">✦ اختيارات عقارية موثوقة</span>
+<h1>اكتشف أفضل<br><span>العقارات المتاحة</span></h1>
+<p>بيوت، شقق، أراضي وأكثر. كل ما تحتاجه لتجد بيت أحلامك في مكان واحد.</p>
+<a href="#properties" class="primary">استكشف العقارات ←</a>
+</div>
+</section>
+</div>
+
+<section class="search-panel" id="searchArea">
+<form id="searchForm" class="search-grid">
+<div class="field">
+<label for="typeFilter">نوع العقار</label>
+<select id="typeFilter">
+<option value="all">كل العقارات</option>
+<option value="شقة">شقق</option>
+<option value="فيلا">فيلات</option>
+<option value="أرض">أراضي</option>
+<option value="بيت">بيوت</option>
+</select>
+</div>
+
+<div class="field">
+<label for="locationFilter">المنطقة</label>
+<select id="locationFilter">
+<option value="all">كل المناطق</option>
+<option>القاهرة الجديدة</option>
+<option>الشيخ زايد</option>
+<option>السادس من أكتوبر</option>
+<option>المنصورة</option>
+<option>أسيوط</option>
+<option>العاصمة الإدارية</option>
+</select>
+</div>
+
+<div class="field">
+<label for="minPrice">أقل سعر</label>
+<input id="minPrice" type="number" min="0" placeholder="أقل سعر">
+</div>
+
+<div class="field">
+<label for="maxPrice">أعلى سعر</label>
+<input id="maxPrice" type="number" min="0" placeholder="أعلى سعر">
+</div>
+
+<button class="primary search-submit" type="submit">⌕ ابحث الآن</button>
+</form>
+</section>
+
+<section class="section container" id="properties">
+<div class="section-head">
+<div>
+<h2>العقارات المميزة</h2>
+<p>اختيارات مميزة تناسب احتياجاتك وميزانيتك</p>
+</div>
+<a href="#properties" class="text-link" id="showAll">عرض الكل ←</a>
+</div>
+
+<div class="filters" id="quickFilters">
+<button class="filter-btn active" data-filter="all">الكل</button>
+<button class="filter-btn" data-filter="بيع">للبيع</button>
+<button class="filter-btn" data-filter="إيجار">للإيجار</button>
+<button class="filter-btn" data-filter="شقة">شقق</button>
+<button class="filter-btn" data-filter="فيلا">فيلات</button>
+<button class="filter-btn" data-filter="أرض">أراضي</button>
+</div>
+
+<div class="property-grid" id="propertyGrid"></div>
+</section>
+
+<section class="section container" id="apartments">
+<div class="section-head">
+<div>
+<h2>شقق للبيع والإيجار</h2>
+<p>مساحات متنوعة ومواقع قريبة من الخدمات</p>
+</div>
+</div>
+
+<div class="category-grid">
+<a class="category-card" href="#properties" onclick="setQuickFilter('شقة')">
+<img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80" alt="شقة عصرية">
+<div class="category-label"><h3>شقق عصرية</h3><p>اختيارات تناسب كل أسرة</p></div>
+</a>
+
+<a class="category-card" href="#properties" onclick="setQuickFilter('إيجار')">
+<img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80" alt="شقة للإيجار">
+<div class="category-label"><h3>شقق للإيجار</h3><p>خيارات مرنة بمواقع مميزة</p></div>
+</a>
+
+<a class="category-card" href="#properties" onclick="setQuickFilter('بيع')">
+<img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80" alt="شقة للبيع">
+<div class="category-label"><h3>شقق للبيع</h3><p>خطوتك الأولى لامتلاك بيتك</p></div>
+</a>
+</div>
+</section>
+
+<section class="section container" id="villas">
+<div class="section-head">
+<div>
+<h2>فيلات وأراضٍ</h2>
+<p>مساحات أوسع وفرص استثمار عقاري</p>
+</div>
+</div>
+
+<div class="category-grid">
+<a class="category-card" href="#properties" onclick="setQuickFilter('فيلا')">
+<img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80" alt="فيلا فاخرة">
+<div class="category-label"><h3>فيلات فاخرة</h3><p>خصوصية ومساحات رحبة</p></div>
+</a>
+
+<a class="category-card" href="#properties" onclick="setQuickFilter('أرض')">
+<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="أرض">
+<div class="category-label"><h3>أراضٍ مميزة</h3><p>فرص لبناء مشروعك القادم</p></div>
+</a>
+
+<a class="category-card" href="#properties" onclick="setQuickFilter('بيت')">
+<img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80" alt="بيت مستقل">
+<div class="category-label"><h3>بيوت مستقلة</h3><p>مساحة وراحة لكل العائلة</p></div>
+</a>
+</div>
+</section>
+
+<section class="section container" id="about">
+<div class="about-grid">
+<img class="about-image" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85" alt="منزل حديث">
+
+<div class="about-copy">
+<span class="eyebrow">من نحن</span>
+<h2>نساعدك تلاقي المكان اللي يشبهك</h2>
+<p>في عقارات بنسهّل عليك رحلة البحث عن بيتك أو استثمارك القادم. بنعرض اختيارات متنوعة بمعلومات واضحة، ونسعى نوفر لك تجربة بسيطة من أول البحث لحد التواصل مع المعلن.</p>
+
+<div class="stats">
+<div class="stat"><strong>+500</strong><span>عقار معروض</span></div>
+<div class="stat"><strong>+300</strong><span>عميل سعيد</span></div>
+<div class="stat"><strong>24/7</strong><span>دعم واستفسارات</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section container" id="reviews">
+<div class="section-head">
+<div><h2>آراء عملائنا</h2><p>تجارب تلهمنا نقدم الأفضل كل يوم</p></div>
+</div>
+
+<div class="reviews">
+<article class="review">
+<div class="stars">★★★★★</div>
+<p>تجربة سهلة جدًا، قدرت أقارن بين أكتر من شقة وأوصل للمعلومات اللي محتاجها بسرعة.</p>
+<strong>أحمد محمود</strong><br><small>عميل — القاهرة</small>
+</article>
+
+<article class="review">
+<div class="stars">★★★★★</div>
+<p>التصميم واضح والتفاصيل منظمة، وده وفر عليّ وقت كبير في البحث عن بيت مناسب.</p>
+<strong>منى إبراهيم</strong><br><small>عميلة — أكتوبر</small>
+</article>
+
+<article class="review">
+<div class="stars">★★★★★</div>
+<p>عجبني إن بيانات كل عقار ظاهرة، والتواصل سهل من نفس صفحة العقار.</p>
+<strong>كريم علي</strong><br><small>عميل — المنصورة</small>
+</article>
+</div>
+</section>
+
+<section class="section container" id="contact">
+<div class="section-head">
+<div><h2>خلينا نتواصل</h2><p>سيب بياناتك وفريقنا هيتواصل معاك</p></div>
+</div>
+
+<div class="contact-grid">
+<div class="contact-info">
+<h3>إحنا هنا لمساعدتك</h3>
+<p>عندك سؤال أو بتدور على عقار بمواصفات معينة؟ ابعتلنا وهنساعدك.</p>
+<p>☎️ +20 100 000 0000</p>
+<p>✉️ hello@aqarat.example</p>
+<p>📍 القاهرة، مصر</p>
+</div>
+
+<form class="contact-form" id="contactForm">
+<div><label for="contactName">الاسم</label><input id="contactName" required placeholder="اكتب اسمك"></div>
+<div><label for="contactPhone">رقم الهاتف</label><input id="contactPhone" required type="tel" placeholder="01xxxxxxxxx"></div>
+<div><label for="contactMessage">رسالتك</label><textarea id="contactMessage" required placeholder="اكتب تفاصيل طلبك..."></textarea></div>
+<button class="primary" type="submit">إرسال الرسالة</button>
+</form>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div><a class="brand" href="#home"><span class="brand-icon">⌂</span><span>عقارات<small>بيتك... أولويتنا</small></span></a><p>منصة عقارية تساعدك تكتشف بيوت وشقق وفيلات وأراضي تناسب احتياجاتك.</p></div>
+<div><h4>روابط سريعة</h4><div class="footer-links"><a href="#home">الرئيسية</a><a href="#properties">العقارات</a><a href="#about">من نحن</a><a href="#contact">اتصل بنا</a></div></div>
+<div><h4>أنواع العقارات</h4><div class="footer-links"><a href="#apartments">الشقق</a><a href="#villas">الفيلات</a><a href="#villas">الأراضي</a></div></div>
+<div><h4>تواصل معنا</h4><p>☎️ +20 100 000 0000</p><p>✉️ hello@aqarat.example</p><p>📍 القاهرة، مصر</p></div>
+</div>
+<div class="copyright">© <span id="year"></span> عقارات — جميع الحقوق محفوظة</div>
+</div>
+</footer>
+
+<div class="modal" id="propertyModal" role="dialog" aria-modal="true">
+<div class="modal-box">
+<button class="modal-close" id="modalClose">×</button>
+<div id="modalContent"></div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div><script>
+// بيانات العقارات التجريبية
+const properties = [
+{
+id:1,title:"فيلا عصرية بحديقة خاصة",type:"فيلا",
+purpose:"بيع",location:"السادس من أكتوبر",
+price:5500000,area:250,rooms:4,baths:3,
+image:"https://images.unsplash.com/photo-1600594137378-6e7f3c7e8b1c?auto=format&fit=crop&w=1000&q=85",
+desc:"فيلا بتصميم حديث ومساحات مفتوحة وحديقة خاصة."
+},
+{
+id:2,title:"بيت راقٍ بتشطيب فاخر",type:"بيت",
+purpose:"بيع",location:"المنصورة",
+price:4200000,area:200,rooms:3,baths:2,
+image:"https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1000&q=85",
+desc:"بيت مستقل بتصميم أنيق وقريب من الخدمات."
+},
+{
+id:3,title:"شقة مفروشة بإطلالة مميزة",type:"شقة",
+purpose:"إيجار",location:"القاهرة الجديدة",
+price:18000,area:145,rooms:3,baths:2,
+image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
+desc:"شقة مفروشة بديكور عصري وإضاءة طبيعية."
+},
+{
+id:4,title:"شقة واسعة بالقرب من الخدمات",type:"شقة",
+purpose:"بيع",location:"الشيخ زايد",
+price:2350000,area:160,rooms:3,baths:2,
+image:"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85",
+desc:"شقة واسعة قريبة من المدارس ومراكز التسوق."
+},
+{
+id:5,title:"أرض مناسبة للاستثمار",type:"أرض",
+purpose:"بيع",location:"العاصمة الإدارية",
+price:3200000,area:400,rooms:0,baths:0,
+image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85",
+desc:"قطعة أرض بمساحة جيدة للاستثمار وفق الاشتراطات المحلية."
+},
+{
+id:6,title:"فيلا بواجهة حجرية أنيقة",type:"فيلا",
+purpose:"بيع",location:"الشيخ زايد",
+price:6800000,area:310,rooms:5,baths:4,
+image:"https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=85",
+desc:"فيلا مستقلة بمساحات واسعة وحديقة خارجية."
+},
+{
+id:7,title:"شقة عملية للشباب",type:"شقة",
+purpose:"بيع",location:"أسيوط",
+price:950000,area:95,rooms:2,baths:1,
+image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85",
+desc:"شقة بتصميم عملي ومساحة مناسبة للسكن."
+},
+{
+id:8,title:"بيت عائلي في منطقة هادئة",type:"بيت",
+purpose:"إيجار",location:"السادس من أكتوبر",
+price:14000,area:180,rooms:3,baths:2,
+image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+desc:"بيت عائلي في منطقة هادئة ومساحة معيشة مريحة."
+},
+{
+id:9,title:"شقة حديثة بتصميم مفتوح",type:"شقة",
+purpose:"بيع",location:"القاهرة الجديدة",
+price:2900000,area:175,rooms:3,baths:2,
+image:"https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1000&q=85",
+desc:"شقة بتصميم مفتوح وتشطيبات عصرية."
+},
+{
+id:10,title:"أرض بمساحة كبيرة",type:"أرض",
+purpose:"بيع",location:"أسيوط",
+price:1600000,area:500,rooms:0,baths:0,
+image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85",
+desc:"أرض بمساحة كبيرة. راجع المستندات قبل الشراء."
+}
+];
+
+const grid = document.getElementById("propertyGrid");
+let quickFilter = "all";
+
+const money = n => n.toLocaleString("en-US") + " جنيه";
+const roomsText = p => p.rooms ? p.rooms + " غرف" : "—";
+const bathsText = p => p.baths ? p.baths + " حمام" : "—";
+
+// إنشاء كارت العقار
+function cardHTML(p){
+return `
+<article class="property-card" onclick="openProperty(${p.id})">
+<div class="property-image">
+<img loading="lazy" src="${p.image}" alt="${p.title}"
+onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80'">
+<span class="tag">${p.purpose==="بيع"?"للبيع":"للإيجار"}</span>
+<button class="heart" onclick="event.stopPropagation();toggleHeart(this)">♡</button>
+</div>
+
+<div class="property-info">
+<h3>${p.title}</h3>
+<div class="location">📍 ${p.location}</div>
+
+<div class="price">
+${money(p.price)}${p.purpose==="إيجار"?" / شهريًا":""}
+</div>
+
+<div class="facts">
+<span>▧ ${p.area} م²</span>
+<span>▤ ${roomsText(p)}</span>
+<span>♧ ${bathsText(p)}</span>
+</div>
+
+<div class="card-actions">
+<button class="details-btn" onclick="event.stopPropagation();openProperty(${p.id})">التفاصيل</button>
+<button class="whatsapp" onclick="event.stopPropagation();contactWhatsApp(${p.id})">واتساب</button>
+</div>
+</div>
+</article>`;
+}
+
+// عرض العقارات
+function render(list=properties){
+grid.innerHTML = list.length
+? list.map(cardHTML).join("")
+: '<div class="empty">مفيش عقارات مطابقة للبحث. جرّب تغيّر معايير البحث.</div>';
+}
+
+// رسالة تنبيه صغيرة
+function showToast(message){
+const toast = document.getElementById("toast");
+toast.textContent = message;
+toast.classList.add("show");
+setTimeout(()=>toast.classList.remove("show"),2800);
+}
+
+// البحث والتصفية
+function applyFilters(){
+const type = document.getElementById("typeFilter").value;
+const location = document.getElementById("locationFilter").value;
+const min = Number(document.getElementById("minPrice").value) || 0;
+const max = Number(document.getElementById("maxPrice").value) || Infinity;
+
+let list = properties.filter(p =>
+(type==="all" || p.type===type) &&
+(location==="all" || p.location===location) &&
+p.price>=min && p.price<=max
+);
+
+if(quickFilter!=="all"){
+if(["بيع","إيجار"].includes(quickFilter)){
+list = list.filter(p=>p.purpose===quickFilter);
+}else{
+list = list.filter(p=>p.type===quickFilter);
+}
+}
+
+render(list);
+document.getElementById("properties").scrollIntoView({behavior:"smooth"});
+}
+
+document.getElementById("searchForm").addEventListener("submit",e=>{
+e.preventDefault();
+quickFilter="all";
+document.querySelectorAll(".filter-btn").forEach(b=>{
+b.classList.toggle("active",b.dataset.filter==="all");
+});
+applyFilters();
+});
+
+document.getElementById("quickFilters").addEventListener("click",e=>{
+const button=e.target.closest("[data-filter]");
+if(!button)return;
+
+quickFilter=button.dataset.filter;
+
+document.querySelectorAll(".filter-btn").forEach(b=>{
+b.classList.toggle("active",b===button);
+});
+
+document.getElementById("typeFilter").value =
+["شقة","فيلا","أرض","بيت"].includes(quickFilter)
+? quickFilter : "all";
+
+applyFilters();
+});
+
+function setQuickFilter(filter){
+quickFilter=filter;
+document.querySelectorAll(".filter-btn").forEach(b=>{
+b.classList.toggle("active",b.dataset.filter===filter);
+});
+setTimeout(applyFilters,80);
+}
+
+document.getElementById("showAll").addEventListener("click",e=>{
+e.preventDefault();
+quickFilter="all";
+document.getElementById("searchForm").reset();
+document.querySelectorAll(".filter-btn").forEach(b=>{
+b.classList.toggle("active",b.dataset.filter==="all");
+});
+render();
+});
+
+// نافذة تفاصيل العقار
+function openProperty(id){
+const p=properties.find(item=>item.id===id);
+if(!p)return;
+
+document.getElementById("modalContent").innerHTML=`
+<img class="modal-img" src="${p.image}" alt="${p.title}">
+<div class="modal-body">
+<span class="eyebrow">${p.purpose==="بيع"?"عقار للبيع":"عقار للإيجار"}</span>
+<h2>${p.title}</h2>
+<div class="location">📍 ${p.location}</div>
+<div class="price">${money(p.price)}${p.purpose==="إيجار"?" / شهريًا":""}</div>
+<p>${p.desc}</p>
+
+<div class="modal-facts">
+<div><b>${p.area} م²</b><small>المساحة</small></div>
+<div><b>${roomsText(p)}</b><small>الغرف</small></div>
+<div><b>${bathsText(p)}</b><small>الحمامات</small></div>
+<div><b>${p.purpose}</b><small>الغرض</small></div>
+</div>
+
+<div class="modal-actions">
+<button class="primary" onclick="contactWhatsApp(${p.id})">تواصل عبر واتساب</button>
+<a class="secondary" href="tel:+201000000000">اتصال هاتفي</a>
+</div>
+</div>`;
+
+document.getElementById("propertyModal").classList.add("open");
+document.body.style.overflow="hidden";
+}
+
+function closeModal(){
+document.getElementById("propertyModal").classList.remove("open");
+document.body.style.overflow="";
+}
+
+document.getElementById("modalClose").addEventListener("click",closeModal);
+
+document.getElementById("propertyModal").addEventListener("click",e=>{
+if(e.target.id==="propertyModal")closeModal();
+});
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape")closeModal();
+});
+
+// التواصل عبر واتساب — غيّر الرقم لرقمك بصيغة دولية
+function contactWhatsApp(id){
+const p=properties.find(item=>item.id===id);
+const phone="201000000000";
+const message=encodeURIComponent(
+`السلام عليكم، أنا مهتم بالعقار ${p.title} في ${p.location} بسعر ${money(p.price)}. ممكن تفاصيل أكتر؟`
+);
+window.open(`https://wa.me/${phone}?text=${message}`,"_blank");
+}
+
+// المفضلة
+function toggleHeart(button){
+button.classList.toggle("saved");
+button.textContent=button.classList.contains("saved")?"♥":"♡";
+showToast(button.classList.contains("saved")
+?"اتضاف العقار للمفضلة"
+:"اتشال العقار من المفضلة");
+}
+
+// نموذج التواصل تجريبي
+document.getElementById("contactForm").addEventListener("submit",e=>{
+e.preventDefault();
+const name=document.getElementById("contactName").value.trim();
+showToast(`شكرًا يا ${name}، النموذج تجريبي ولم تُرسل البيانات إلى خادم.`);
+e.target.reset();
+});
+
+// قائمة الموبايل
+document.getElementById("menuBtn").addEventListener("click",()=>{
+document.getElementById("navlinks").classList.toggle("open");
+});
+
+document.querySelectorAll(".navlinks a").forEach(link=>{
+link.addEventListener("click",()=>{
+document.getElementById("navlinks").classList.remove("open");
+});
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
